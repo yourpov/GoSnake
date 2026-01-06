@@ -1,0 +1,45 @@
+# GoSnake
+
+Terminal snake game built with Go, Bubbletea and Lipgloss.
+
+## Requirements
+
+- go 1.21+
+
+## Running it
+
+```bash
+go run .
+```
+
+or build it first:
+
+```bash
+go build -o gosnake.exe
+.\gosnake.exe
+```
+
+## Controls
+
+- WASD, Arrow keys, or Vim keys (hjkl) to move
+- Space to pause
+- Q to quit
+- R to restart after game over
+
+## How it works
+
+The snake moves around a 30x20 grid eating food to grow longer. Game speeds up every 50 points. Don't hit the walls or yourself.
+
+## Structure
+
+```
+main.go           entry point
+core/
+  game.go         bubbletea model and game loop
+  snake.go        snake movement and collision
+  food.go         food spawning
+  board.go        rendering
+  point.go        coordinate helpers
+```
+
+Game ticks every 150ms initially, getting faster as you score. Direction changes are buffered to prevent reversing into yourself between ticks.
